@@ -1,0 +1,25 @@
+!!!
+%html
+  %head
+    %link{ :rel => "stylesheet", :type => "text/css", :href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" }
+  %body
+    .container
+      #url-form.col-md-12
+        %h2 Enter a URL to shorten:
+        %form.form-inline{ :id => "url-form", :action => "add_url", :method => "post" }
+          .form-group
+            %label{:for => "url"} URL to Shorten:
+            %input.form-control{:placeholder => "http://www.google.com", :type => "text", :name => "url"}
+          %button.btn.btn-default{:type => "submit"} Go!
+      -if flash.any_error?
+        .alert.alert-warning.col-md-4{:style => "margin-top: 20px"}
+          %h4{:style => "text-align: center"} 
+            =flash.error
+      -if flash.any_message?
+        .alert.alert-success.col-md-4{:style => "margin-top: 20px"}
+          %h4
+            Your shortened url is:
+          .well.code{:style => "background-color: white; padding: 0; margin: 0 auto; margin-top: 10px; width: 200px; border: 1px solid black;"}
+            %h5{:style => "text-align: center"} 
+              =flash.message
+   
